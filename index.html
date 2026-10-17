@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стоматологическая клиника «Белая улыбка»</title>
+    <style>
+        :root {
+            --color-brown: #7b6953;
+            --color-green: #a4ab8a;
+            --color-beige: #f8e5c7;
+            --color-light-green: #adbbaa;
+            --color-gray-cyan: #86989a;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-beige);
+            color: var(--color-brown);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--color-green);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h2 {
+            text-align: center;
+            color: var(--color-brown);
+            font-size: 2.2em;
+            margin-bottom: 40px;
+        }
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .doctor-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            border-top: 5px solid var(--color-gray-cyan);
+            transition: transform 0.3s ease;
+        }
+        .doctor-card:hover {
+            transform: translateY(-5px);
+        }
+        .doctor-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            object-position: top;
+        }
+        .doctor-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .doctor-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--color-brown);
+        }
+        .doctor-role {
+            font-size: 0.95em;
+            color: var(--color-gray-cyan);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .doctor-exp {
+            align-self: flex-start;
+            background-color: var(--color-light-green);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .doctor-location {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            color: var(--color-brown);
+        }
+        .doctor-link {
+            margin-top: auto;
+            text-decoration: none;
+            color: white;
+            background-color: var(--color-green);
+            padding: 12px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .doctor-link:hover {
+            background-color: var(--color-brown);
+        }
+        .addresses-section {
+            background-color: var(--color-light-green);
+            padding: 60px 0;
+        }
+        .addresses-section h2 {
+            color: white;
+        }
+        .addresses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .address-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-left: 6px solid var(--color-green);
+            display: flex;
+            flex-direction: column;
+        }
+        .address-title {
+            font-weight: 800;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: var(--color-brown);
+            text-transform: uppercase;
+        }
+        .address-schedule {
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            color: var(--color-gray-cyan);
+            white-space: pre-line;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+        .address-phone {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: var(--color-brown);
+            margin-bottom: 15px;
+        }
+        .address-link {
+            text-decoration: none;
+            color: var(--color-green);
+            font-weight: bold;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            align-self: flex-start;
+            position: relative;
+        }
+        .address-link::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background-color: var(--color-green);
+            position: absolute;
+            right: -50px;
+            top: 50%;
+        }
+        .address-link::before {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--color-green);
+            position: absolute;
+            right: -54px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        footer {
+            background-color: var(--color-brown);
+            color: var(--color-beige);
+            text-align: center;
+            padding: 30px 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Белая улыбка</h1>
+    <p style="margin: 10px 0 0 0; font-size: 1.2em; opacity: 0.9;">Стоматологическая клиника</p>
+</header>
+
+<div class="container">
+    <h2>Наши специалисты</h2>
+    <div class="doctors-grid">
+
+        <div class="doctor-card">
+            <img src="avrusghg9o9vgrjxzdww5kel2tr32n24.webp" alt="Сафронова Ольга Борисовна">
+            <div class="doctor-info">
+                <div class="doctor-exp">Стаж 33 года</div>
+                <div class="doctor-name">Сафронова Ольга Борисовна</div>
+                <div class="doctor-role">Главный врач сети стоматологических клиник Мега-Дент</div>
+                <a href="https://mega-dent72.ru/doctors/safronova-olga-borisovna/" class="doctor-link">Подробнее</a>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <img src="o079g3t9wqq0slg8afnb1cg7qfldc9v6.webp" alt="Спирин Роман Сергеевич">
+            <div class="doctor-info">
+                <div class="doctor-exp">Стаж 14 лет</div>
+                <div class="doctor-name">Спирин Роман Сергеевич</div>
+                <div class="doctor-role">Заведующий филиалом, врач стоматолог - ортопед, хирург. Главный врач клиники на ул. Чернышевского, 2б</div>
+                <div class="doctor-location"><strong>Прием ведет на:</strong> ул. Чернышевского, 2б</div>
+                <a href="https://mega-dent72.ru/doctors/spirin-roman-sergeevich/" class="doctor-link">Записаться на прием</a>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <img src="4t82yf24ndr8jukjrb6b6yete863pbla.webp" alt="Бурцев Александр Владимирович">
+            <div class="doctor-info">
+                <div class="doctor-exp">Стаж 16 лет</div>
+                <div class="doctor-name">Бурцев Александр Владимирович</div>
+                <div class="doctor-role">Заведующий филиалом, врач стоматолог-хирург. Главный врач клиники на ул. Горького. 42а</div>
+                <div class="doctor-location"><strong>Прием ведет на:</strong> ул. М. Горького, 42a</div>
+                <a href="https://mega-dent72.ru/doctors/burtsev-aleksandr-vladimirovich/" class="doctor-link">Записаться на прием</a>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <img src="jz7bgy4lofpfi6jlzfxlzdzluvixwafz.webp" alt="Чаюков Сергей Сергеевич">
+            <div class="doctor-info">
+                <div class="doctor-exp">Стаж 11 лет</div>
+                <div class="doctor-name">Чаюков Сергей Сергеевич</div>
+                <div class="doctor-role">Заведующий филиалом, врач стоматолог- хирург. Главный врач клиники на ул. Ф. Салманова, 16</div>
+                <div class="doctor-location"><strong>Прием ведет на:</strong> ул. Фармана Салманова, 16</div>
+                <a href="https://mega-dent72.ru/doctors/chayukov-sergey-sergeevich/" class="doctor-link">Записаться на прием</a>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <img src="uulae80ey5n8s9jfm0eoj6knr4lywj1n.webp" alt="Медянцева Вероника Валерьевна">
+            <div class="doctor-info">
+                <div class="doctor-exp">Стаж 12 лет</div>
+                <div class="doctor-name">Медянцева Вероника Валерьевна</div>
+                <div class="doctor-role">Заведующая филиалом, врач стоматолог-терапевт. Главный врач клиники на ул. Газовиков, 41/3</div>
+                <div class="doctor-location"><strong>Прием ведет на:</strong> ул. Газовиков, 41</div>
+                <a href="https://mega-dent72.ru/doctors/medyantseva-veronika-valerevna/" class="doctor-link">Записаться на прием</a>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <img src="q4v9izlivuykqu50vyrjwae756wito56.webp" alt="Екимова Александра Николаевна">
+            <div class="doctor-info">
+                <div class="doctor-exp">Стаж 8 лет</div>
+                <div class="doctor-name">Екимова Александра Николаевна</div>
+                <div class="doctor-role">Заведующая филиалом, врач стоматолог - терапевт. Старший врач</div>
+                <div class="doctor-location"><strong>Прием ведет на:</strong> ул. П. Артамонова, 13/1</div>
+                <a href="https://mega-dent72.ru/doctors/ekimova-aleksandra-nikolaevna/" class="doctor-link">Записаться на прием</a>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <img src="etw43oelw10rlc5qgdrv5nqqkcsclc7j.webp" alt="Мальченко Александр Константинович">
+            <div class="doctor-info">
+                <div class="doctor-exp">Стаж 15 лет</div>
+                <div class="doctor-name">Мальченко Александр Константинович</div>
+                <div class="doctor-role">Заведующий филиалом, врач стоматолог-ортопед. Главный врач клиники на ул. Монтажников, 61</div>
+                <div class="doctor-location"><strong>Прием ведет на:</strong> ул. Монтажников, 61</div>
+                <a href="https://mega-dent72.ru/doctors/malchenko-aleksandr-konstantinovich/" class="doctor-link">Записаться на прием</a>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <img src="i77vb5el2djkw8t8y3tpjrlzwud9x7zh.webp" alt="Самигулина Карина Артуровна">
+            <div class="doctor-info">
+                <div class="doctor-exp">Стаж 13 лет</div>
+                <div class="doctor-name">Самигулина Карина Артуровна</div>
+                <div class="doctor-role">Заведующая филиалом, врач стоматолог детский</div>
+                <div class="doctor-location"><strong>Прием ведет на:</strong> ул. Пермякова, 70 Детская стоматология</div>
+                <a href="https://mega-dent72.ru/doctors/samigulina-karina-arturovna/" class="doctor-link">Записаться на прием</a>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <img src="szwarqt5tx0vna7hnmvho8ufdh672zdp.webp" alt="Мешкова Анастасия Александровна">
+            <div class="doctor-info">
+                <div class="doctor-exp">Стаж 15 лет</div>
+                <div class="doctor-name">Мешкова Анастасия Александровна</div>
+                <div class="doctor-role">Заведующая филиалом, врач стоматолог-терапевт. Главный врач клиники на ул. Герцена, 55</div>
+                <div class="doctor-location"><strong>Прием ведет на:</strong> ул. Герцена, 55</div>
+                <a href="https://mega-dent72.ru/doctors/meshkova-anastasiya-aleksandrovna/" class="doctor-link">Записаться на прием</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="addresses-section">
+    <div class="container">
+        <h2>Наши адреса</h2>
+        <div class="addresses-grid">
+
+            <div class="address-card">
+                <div class="address-title">Ул. Пермякова, 70 Детская стоматология</div>
+                <div class="address-schedule">пн-пт 09:00 – 19:00,<br>сб – 09:00 – 20:00,<br>вс – 09:00 – 15:00</div>
+                <div class="address-phone">+7 (3452) 57-82-03</div>
+                <a href="#" class="address-link">Подробнее</a>
+            </div>
+
+            <div class="address-card">
+                <div class="address-title">Ул. П. Артамонова, 13/1</div>
+                <div class="address-schedule">пн-пт 09:00 – 20:00,<br>сб 09:00 – 18:00,<br>вс – выходной</div>
+                <div class="address-phone">+7 (3452) 57-74-47</div>
+                <a href="#" class="address-link">Подробнее</a>
+            </div>
+
+            <div class="address-card">
+                <div class="address-title">Ул. Монтажников, 61</div>
+                <div class="address-schedule">пн-пт 09:00 – 20:00,<br>сб 09:00 – 18:00,<br>вс – выходной</div>
+                <div class="address-phone">+ 7 (3452) 57-74-47</div>
+                <a href="#" class="address-link">Подробнее</a>
+            </div>
+
+            <div class="address-card">
+                <div class="address-title">Ул. М. Горького, 42А</div>
+                <div class="address-schedule">пн-пт 09:00 – 20:00,<br>сб 09:00 – 18:00,<br>вс – выходной</div>
+                <div class="address-phone">+7 (3452) 57-74-47</div>
+                <a href="#" class="address-link">Подробнее</a>
+            </div>
+
+            <div class="address-card">
+                <div class="address-title">Ул. Газовиков, 41</div>
+                <div class="address-schedule">пн-пт 09:00 – 20:00,<br>сб 09:00 – 18:00,<br>вс – выходной</div>
+                <div class="address-phone">+7 (3452) 57-74-47</div>
+                <a href="#" class="address-link">Подробнее</a>
+            </div>
+
+            <div class="address-card">
+                <div class="address-title">Ул. Герцена, 55</div>
+                <div class="address-schedule">пн-пт 09:00 – 20:00,<br>сб 09:00 – 18:00,<br>вс – выходной</div>
+                <div class="address-phone">+7 (3452) 57-74-47</div>
+                <a href="#" class="address-link">Подробнее</a>
+            </div>
+
+            <div class="address-card">
+                <div class="address-title">Ул. Чернышевского, 2Б</div>
+                <div class="address-schedule">пн-пт 09:00 – 20:00,<br>сб 09:00 – 18:00,<br>вс – выходной</div>
+                <div class="address-phone">+7 (3452) 57-74-47</div>
+                <a href="#" class="address-link">Подробнее</a>
+            </div>
+
+            <div class="address-card">
+                <div class="address-title">Ул. Фармана Салманова, 16</div>
+                <div class="address-schedule">пн-пт 09:00 – 20:00,<br>сб 09:00 – 18:00,<br>вс – выходной</div>
+                <div class="address-phone">+7 (3452) 57-74-47</div>
+                <a href="#" class="address-link">Подробнее</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Стоматологическая клиника «Белая улыбка». Все права защищены.</p>
+</footer>
+
+</body>
+</html>
